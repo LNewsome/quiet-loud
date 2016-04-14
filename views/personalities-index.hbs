@@ -3,8 +3,11 @@
 
 <ol>
 {{#each personalities as |personalities|}}
-  <li>{{personalities.name}}</li>
+  <h3><a href="/{{personalities.name}}">
+    {{personalities.name}}</a>
+  <h3>
+  <p>
   {{personalities.description}}
-
+  </p>
   {{/each}}
 </ol>

@@ -25,7 +25,13 @@ app.get("/personalities", function(req, res){
     personalities: personalities
   });
 });
-
+app.get("/:name", function(req, res){
+  Personalities.findOne(req.params).then(function(response){
+    res.render("personalities-show",{
+      personalities: response
+    });
+  });
+});
 app.listen(3003, function(){
   console.log("Work!")
 });
