@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/LNewsome/quiet-loud#readme",
   "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.15.0",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^4.4.12"
+    "mongoose": "^4.4.12",
+    "parser": "^0.1.4"
   }
 }

@@ -1,3 +1,10 @@
 <h2>{{personalities.name}}</h2>
 
-<p>{{personalities.descriptions}}</p>
+<p>{{personalities.description}}</p>
+
+<form action="/{{personalities.name}}" method="POST">
+    <textarea
+    name="personalities">Add text!
+    </textarea>
+    <button type="submit">Add-on!</button>
+</form>

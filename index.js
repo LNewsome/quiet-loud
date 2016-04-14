@@ -1,9 +1,11 @@
 var express = require("express");
 var hbs     = require("express-handlebars");
+var parser  = require("body-parser");
 var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
 
+app.use(parser.urlencoded({extended: true}));
 app.set("view engine", "hbs");
 app.engine(".hbs", hbs({
   extname:     ".hbs",
@@ -31,6 +33,12 @@ app.get("/:name", function(req, res){
       personalities: response
     });
   });
+});
+app.post("/:name", function(req, res){
+  Personalities.findOneAndUpdate(req.params, reg.body.personalities, {
+    new:true}).then(function(response){
+
+    });
 });
 app.listen(3003, function(){
   console.log("Work!")
