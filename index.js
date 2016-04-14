@@ -14,9 +14,10 @@ app.engine(".hbs", hbs({
 app.use("/public", express.static("public"));
 
 app.get("/", function(req, res){
-    Personalities.findOne().then(function(response){
-      res.json(response);
-    });
+    // Personalities.findOne().then(function(response){
+      // res.json(response);
+    // });
+    res.render("personalities-index");
 });
 app.get("/personalities", function(req, res){
   res.render("personalities-index", {
