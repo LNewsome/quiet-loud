@@ -1,8 +1,8 @@
 var mongoose =require("mongoose");
 
-var PersonalitiesSchema ={
+var PersonalitiesSchema = {
   name: String,
-  description:String,
+  description: String
 
 }
 

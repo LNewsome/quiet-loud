@@ -1,1 +1,10 @@
-<h2>{{personalities}} personalities</h2>
+<h2>Personalities</h2>
+
+
+<ol>
+{{#each personalities as |personalities|}}
+  <li>{{personalities.name}}</li>
+  {{personalities.description}}
+
+  {{/each}}
+</ol>
