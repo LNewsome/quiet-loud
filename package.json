@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LNewsome/quiet-loud#readme",
   "dependencies": {
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.4.12"
   }
 }
