@@ -35,9 +35,9 @@ app.get("/:name", function(req, res){
   });
 });
 app.post("/:name", function(req, res){
-  Personalities.findOneAndUpdate(req.params, reg.body.personalities, {
+  Personalities.findOneAndUpdate(req.params, req.body.personalities, {
     new:true}).then(function(response){
-
+      res.redirect("/" + response.name);
     });
 });
 app.listen(3003, function(){
