@@ -1,6 +1,7 @@
 var express = require("express");
 var hbs     = require("express-handlebars");
 var parser  = require("body-parser");
+var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");

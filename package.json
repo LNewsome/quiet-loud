@@ -19,6 +19,7 @@
   "dependencies": {
     "body": "^5.1.0",
     "body-parser": "^1.15.0",
+    "debug-log": "^1.0.0",
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.4.12",
     "parser": "^0.1.4"
