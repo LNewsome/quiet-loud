@@ -2,8 +2,9 @@ var mongoose =require("mongoose");
 
 var PersonalitiesSchema = {
   name: String,
-  description: String
-
+  description: String,
+  firstName: String,
+  lastName: String
 }
 
 mongoose.model("Personalities", PersonalitiesSchema);

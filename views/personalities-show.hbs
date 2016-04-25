@@ -3,6 +3,12 @@
 <p>{{personalities.description}}</p>
 
 <form action="/{{personalities.name}}" method="POST">
+    First name:<br>
+    <input type="text" name="firstname"><br>
+    Last name:<br>
+    <input type="text" name="lastname">
+    <br>
+    <p>Write Something!</p>
     <textarea
     name="personalities[description]">{{personalities.description}}
     </textarea>
