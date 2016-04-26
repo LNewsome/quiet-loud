@@ -4,7 +4,6 @@ var parser  = require("body-parser");
 var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
-var personalities = express();
 var Personalities = mongoose.model("Personalities");
 
 
@@ -31,7 +30,7 @@ app.get("/personalities", function(req, res){
     personalities: personalities
   });
 });
-app.get("/:name/forum-show", function(req, res){
+app.get("/:name", function(req, res){
   Personalities.findOne(req.params).then(function(response){
     res.render("personalities-show",{
       body: req.body,
@@ -40,32 +39,7 @@ app.get("/:name/forum-show", function(req, res){
   });
 });
 
-
-// // crud for forum-show
-// app.get("/", function(req, res){
-//   Personalities.findOne(req.params).then(function(response){
-//       res.redirect("forum-show");
-//   });
-// });
-//
-// app.post("/:name", function(req, res){
-//   Personalities.find({name: req.params.name, req.body.personalities, {
-//      new:true}).then(function(personalities){
-//        res.render("forum-show",{
-//          personalities: personalities);
-//     });
-//  });
-// app.put("/:id", function(request, response){
-//   Personalities.find(req.params).then(function(response){
-//     res.send("/");
-//   });
-// });
-// app.delete("/:id", function(request, response){
-//   Personalities.find(req.params).then(function(respon){
-//       response.send("DELETE");
-//   });
-// });
-app.post("/Personalities", function(req, res){
+app.post("/personalities", function(req, res){
    res.json(req.body);
  });
 
