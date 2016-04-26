@@ -4,8 +4,8 @@ var parser  = require("body-parser");
 var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
-var Personalities = mongoose.model("Personalities");
-var Forum = mongoose.model("Forum-show");
+var Personalities = mongoose.model("./Personalities");
+var Forum = mongoose.model("./Forum-show");
 
 app.use(parser.urlencoded({extended: true}));
 app.set("view engine", "hbs");
@@ -40,18 +40,26 @@ app.get("/:name", function(req, res){
 
 // crud for forum-show
 app.get("/", function(req, res){
-  Personalities.find(req.params).then(function(response){
-      response.send("/");
+  Personalities.findOne(req.params).then(function(response){
+      res.redirect("./forum-show");
   });
 });
+
 app.post("/", function(request, response){
   Personalities.find(req.params).then(function(response){
-    response.send("/");
+    res.render("./forum-show");
   });
 });
+app.post("/:name", function(req, res){
+  Personalities.findOneAndUpdate({name: req.params.name, req.body.personalities, {
+     new:true}).then(function(personalities){
+       res.render("forum-show",{
+         personalities: response);
+    });
+ });
 app.put("/:id", function(request, response){
   Personalities.find(req.params).then(function(response){
-    response.send("/");
+    res.send("/");
   });
 });
 app.delete("/:id", function(request, response){
