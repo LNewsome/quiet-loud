@@ -1,6 +1,6 @@
 <h2>{{personalities.name}}</h2>
 
-<form action="/{{personalities.name}}" method="POST">
+<form action="/:name/forum" method="POST">
     First name:<br>
     <input type="text" name="firstname"><br>
     Last name:<br>
@@ -8,6 +8,6 @@
     <br>
 
 <h3>Asks Anything!</h3>
-  <textarea question"personalities[introvertquestions]">Type Your Question!</textarea>
-  <button type="submit">Ask!</button>
+  <textarea question"personalities">Type Your Question!</textarea>
+  <button type="submit"><a href="forum-show">Ask!</a></button>
 </form>

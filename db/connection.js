@@ -8,7 +8,6 @@ var PersonalitiesSchema = {
 }
 
 mongoose.model("Personalities", PersonalitiesSchema);
-mongoose.model("Forum",ForumSchema);
 mongoose.connect("mongodb://localhost/quietloud");
 
 module.exports = mongoose;

@@ -1,5 +1,5 @@
 var mongoose =require("./connection");
-var seedData =require("./seeds");
+var seedData =require("./seeds.json");
 var Personalities = mongoose.model("Personalities");
 
 Personalities.remove().then(function(){
