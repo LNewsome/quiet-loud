@@ -6,5 +6,19 @@
   {
     "name":"Extrovert",
     "description":"Gains energy outwards, meaning they need to be amongst other to gain energy."
+  },
+  {
+    "introvertquestions":
+    "Why do you enjoy the things you enjoy?"
+    "What makes you an Introvert?"
+    "Do you have any Introverted traits as a Extrovert?"
+    "What do you like about being and introvert?"
+  },
+  {
+    "extrovertquestions":
+    "Why do you enjoy the things you enjoy?"
+    "What makes you an Extrovert?"
+    "Do you have any Extroverted traits as an Introvert?"
+    "What do you like about being an extrovert?"
   }
 ]

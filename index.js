@@ -41,6 +41,14 @@ app.post("/:name", function(req, res){
       res.redirect("/" + response.name);
     });
 });
+// app.post("/:name", function(req, res){
+//   Personalities.findOneAndUpdate(req.params, req.body.personalities, {
+//     new:true}).then(function(response){
+//       res.redirect("/" + response.name);
+//     });
+// });
+
+
 app.listen(3003, function(){
   console.log("Work!")
 });

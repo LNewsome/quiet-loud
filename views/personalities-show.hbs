@@ -1,16 +1,13 @@
 <h2>{{personalities.name}}</h2>
 
-<p>{{personalities.description}}</p>
-
 <form action="/{{personalities.name}}" method="POST">
     First name:<br>
     <input type="text" name="firstname"><br>
     Last name:<br>
     <input type="text" name="lastname">
     <br>
-    <p>Write Something!</p>
-    <textarea
-    name="personalities[description]">{{personalities.description}}
-    </textarea>
-    <button type="submit">Add-on!</button>
+<h3>Asks Anything!</h3>
+  <textarea question"personalities[introvertquestions]">Type Your Question!</textarea>
 </form>
+  <br>
+  <input type="submit">Ask!</button>
