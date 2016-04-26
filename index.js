@@ -5,6 +5,7 @@ var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
+var Forum = mongoose.model("Forum-show");
 
 app.use(parser.urlencoded({extended: true}));
 app.set("view engine", "hbs");
@@ -35,19 +36,29 @@ app.get("/:name", function(req, res){
     });
   });
 });
-app.post("/:name", function(req, res){
-  Personalities.findOneAndUpdate(req.params, req.body.personalities, {
-    new:true}).then(function(response){
-      res.redirect("/" + response.name);
-    });
-});
-// app.post("/:name", function(req, res){
-//   Personalities.findOneAndUpdate(req.params, req.body.personalities, {
-//     new:true}).then(function(response){
-//       res.redirect("/" + response.name);
-//     });
-// });
 
+
+// crud for forum-show
+app.get("/", function(req, res){
+  Personalities.find(req.params).then(function(response){
+      response.send("/");
+  });
+});
+app.post("/", function(request, response){
+  Personalities.find(req.params).then(function(response){
+    response.send("/");
+  });
+});
+app.put("/:id", function(request, response){
+  Personalities.find(req.params).then(function(response){
+    response.send("/");
+  });
+});
+app.delete("/:id", function(request, response){
+  Personalities.find(req.params).then(function(respon){
+      response.send("DELETE");
+  });
+});
 
 app.listen(3003, function(){
   console.log("Work!")
