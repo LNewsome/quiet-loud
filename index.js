@@ -4,6 +4,7 @@ var parser  = require("body-parser");
 var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
+var crud = require("express-mongoose-crud");
 var Personalities = mongoose.model("Personalities");
 
 
@@ -38,11 +39,22 @@ app.get("/:name", function(req, res){
     });
   });
 });
-
-app.post("/personalities", function(req, res){
-   res.json(req.body);
- });
-
+crud = crud({mongoose:mongoose});
+app.post("/:entity", crud, function(req, res){
+  res.json(res.locals[req.params.entity]);
+});
+app.get("/:entity/:id", crud, function(req, res){
+  res.json(res.locals[req.params.entity]);
+});
+app.get("/:entity", crud, function(req, res){
+  res.json(res.locals[req.params.entity]);
+});
+app.put("/;entity/:id", crud, function(req, res){
+  res.json(req.locals[req.params.entity]);
+});
+app.delete("/:entity/:id",crud, function(req, res){
+  res.json(req.locals[req.params.entity]);
+});
 
 app.listen(3003, function(){
   console.log("Work!")
