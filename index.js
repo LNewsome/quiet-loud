@@ -17,12 +17,9 @@ app.engine(".hbs", hbs({
 app.use("/public", express.static("public"));
 
 app.get("/", function(req, res){
-    Personalities.find().then(function(response){
-      res.render("personalities-index",{
-        personalities: response
-      });
-    });
+  res.redirect("/personalities")
 });
+
 app.get("/personalities", function(req, res){
   Personalities.find().then(function(results){
     res.render("personalities-index",{
@@ -32,33 +29,41 @@ app.get("/personalities", function(req, res){
 });
 
 // Create a UserQuestio, for a specific personality
-app.post("/personalities/:personaity/user_questions", function(req, res){
+app.post("/personalities/:name/user_questions", function(req, res){
   //find personality
-  Personalities.findOne({personality: "introvert"}).then(function(personality){
-    //add question to persanilty
-    //go to show page
-    var new_user_question = req.body.personality
-    personaility.questions.push(new_user_question)
+  // console.log("params", req.params)
+  // console.log("body", req.body)
+  Personalities.findOne({personality: req.params.name}).then(function(personality){
+    if(personality === null){
+      res.send("Personality NOT found:" + req.params);
+    } else {
+      //add question to personalty
+      //go to show page
+      // console.log("post P:", personality)
+      var new_user_question = req.body.personality
+      personality.user_questions.push(new_user_question)
+      personality.save(function (err) {
+        if (err) return handleError(err);
+        res.redirect("/" + personality.personality)
+      })
+    }
+  }).catch(function(err){
+    res.send("ERROR: " + err);
   });
-  res.redirect("/personalities/" + req.personality+ "/user_questions")
 });
 
-app.get("/personalities/:personality/user_questions", function(req, res){
-  Personalities.findOne({personality:"introvert"}).then(function(result){
-    console.log("Personality: ", result);
-    res.render("forum-show",{
-      user_questions:result
-    });
-  })
-})
-
 app.get("/:name", function(req, res){
-  Personalities.findOne(req.params).then(function(response){
-    res.render("personalities-show",{
-      body: req.body,
-      personalities: response
-    });
-  });
+  // console.log("GET personality", req.params)
+  Personalities.findOne({personality: req.params.name}).then(function(found_personality){
+    // console.log("Personality: ", found_personality);
+    if(found_personality === null){
+      res.send("Personality NOT found: " + req.params.name);
+    } else {
+      res.render("personalities-show",{
+        personality: found_personality
+      });
+    }
+  })
 });
 
 

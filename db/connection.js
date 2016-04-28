@@ -1,10 +1,19 @@
 var mongoose =require("mongoose");
 
+var UserQuestionSchema = {
+  firstname: String,
+  lastname: String,
+  question: String
+}
+
 var PersonalitiesSchema = {
-  name: String,
+  personality: String,
   description: String,
   firstName: String,
-  lastName: String
+  lastName: String,
+  user_questions: [
+    UserQuestionSchema
+  ]
 }
 
 mongoose.model("Personalities", PersonalitiesSchema);

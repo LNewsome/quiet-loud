@@ -1,14 +1,28 @@
-<h2>{{personalities.name}}</h2>
+<h1>{{personality.personality}}</h1>
 
-<form action="/personalities/introvert/user_questions" method="POST">
+
+<h2>Questions asked of us:</h2>
+<ol>
+  {{#each personality.user_questions as |question|}}
+    <li>
+      {{question.firstname}}
+      {{question.lastname}}
+      {{question.question}}
+    </li>
+  {{/each}}
+</ol>
+
+
+
+<h2>Ask us a question</h2>
+<form action="/personalities/{{personality.personality}}/user_questions" method="POST">
     First name:<br>
     <input type="text" name="personality[firstname]">
     <br>
     Last name:<br>
     <input type="text" name="personality[lastname]">
     <br>
-
-<h3>Asks Anything!</h3>
-  <textarea name="personality[question]">Type Your Question!</textarea>
+  Question:<br>
+  <textarea name="personality[question]" placeholder="Type a Question"></textarea>
   <button type="submit">Ask!</button>
 </form>
