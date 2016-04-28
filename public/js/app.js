@@ -4,10 +4,10 @@
 
 (function(){
   angular
-    .module("quietlyloud"),
-      "ui-router"
-})
-  .config(router)
+    .module("quietly.loud"[
+      "ui.router"
+  ])
+  .config(Router)
   .controller("personalitiesIndexController", personalitiesIndexCtrl);
 
     Router.injector =["$stateProvider", "$locationProvider", "$urlRouterProvider"];
@@ -15,17 +15,41 @@
       $locationProvider.html5mode(true);
       $stateProvider
       .state("main",{
-        url: "/",
+        url: "/quietly_loud",
         templateUrl:"/html/personalities-index.html",
         controller:"personalitiesIndexController",
-        controllerAs:""
+        controllerAs:"perIndexVM"
       })
-      .state("test",{
-        url: "/test",
+      .state("main",{
+        url: "/quietlylo",
       });
       $urlRouterProvider.otherwise("/");
     }
-    function personalitiesIndexCtrl(){
+personalitiesFactory.$inject =["$resouce"];
+  function personalitiesFactory($resource){
+    var Personalities = $resource("api/product/:name");
+    return Personalities
+  }
+
+
+personalitiesIndexCtrl.inject=["personalities"];
+    function personalitiesIndexCtrl(personalities){
       var vm =this;
-      vm.name = persanilty;
-    }
+      vm.personailty = Personalities.query();
+      vm.create = function(){
+        Personalities.save(vm.newPersonalities, function(response){
+          console.log(response)
+        });
+      };
+    };
+});
+personalitiesIndexCtrl.inject=["$stateParams", Personalities];
+function personalitiesIndexCtrl($stateParams, Personalities){
+  var vm =this;
+  vm.personalities =Personalities.get($stateParams, function(response){
+      console.log(response);
+      });
+    });
+  };
+};
+});

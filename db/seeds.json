@@ -1,9 +1,9 @@
 [
   {
-    "name":"Introvert",
+    "personality":"Introvert",
     "description": "Gains energy inwards, meaning they need solitude to regain energy."
   },
   {
-    "name":"Extrovert",
+    "personality":"Extrovert",
     "description":"Gains energy outwards, meaning they need to be amongst other to gain energy."
   }

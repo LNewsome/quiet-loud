@@ -6,7 +6,6 @@ var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
 
-
 app.use(parser.urlencoded({extended: true}));
 app.set("view engine", "hbs");
 app.engine(".hbs", hbs({
@@ -33,9 +32,9 @@ app.get("/personalities", function(req, res){
 });
 
 // Create a UserQuestio, for a specific personality
-app.post("/personalities/:name/user_questions", function(req, res){
+app.post("/personalities/:personaity/user_questions", function(req, res){
   //find personality
-  Personalities.findOne({name: "introvert"}).then(function(personality){
+  Personalities.findOne({personality: "introvert"}).then(function(personality){
     //add question to persanilty
     //go to show page
     var new_user_question = req.body.personality
@@ -44,8 +43,15 @@ app.post("/personalities/:name/user_questions", function(req, res){
   });
   res.send({params: req.params, body:req.body});
 });
+app.get("/personalities/:personality/user_questions", function(req, res){
+  Personalities.findOne({personality:"introvert"}).then(function(results){
+    res.render("forum-show",{
+      user_questions:result
+    });
+  })
+})
 
-app.get("/:name", function(req, res){
+app.get("/:personality", function(req, res){
   Personalities.findOne(req.params).then(function(response){
     res.render("personalities-show",{
       body: req.body,
