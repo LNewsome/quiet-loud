@@ -21,7 +21,7 @@
         controllerAs:"perIndexVM"
       })
       .state("main",{
-        url: "/quietlylo",
+        url: "/quietlyloud",
       });
       $urlRouterProvider.otherwise("/");
     }
@@ -43,13 +43,10 @@ personalitiesIndexCtrl.inject=["personalities"];
       };
     };
 });
-personalitiesIndexCtrl.inject=["$stateParams", Personalities];
-function personalitiesIndexCtrl($stateParams, Personalities){
+personalitiesIndexCtrl.inject=["$stateParams", personalities];
+function personalitiesIndexCtrl($stateParams, personalities){
   var vm =this;
   vm.personalities =Personalities.get($stateParams, function(response){
       console.log(response);
       });
-    });
-  };
-};
-});
+}
