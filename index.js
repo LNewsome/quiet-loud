@@ -39,19 +39,20 @@ app.post("/personalities/:personaity/user_questions", function(req, res){
     //go to show page
     var new_user_question = req.body.personality
     personaility.questions.push(new_user_question)
-
   });
-  res.send({params: req.params, body:req.body});
+  res.redirect("/personalities/" + req.personality+ "/user_questions")
 });
+
 app.get("/personalities/:personality/user_questions", function(req, res){
-  Personalities.findOne({personality:"introvert"}).then(function(results){
+  Personalities.findOne({personality:"introvert"}).then(function(result){
+    console.log("Personality: ", result);
     res.render("forum-show",{
       user_questions:result
     });
   })
 })
 
-app.get("/:personality", function(req, res){
+app.get("/:name", function(req, res){
   Personalities.findOne(req.params).then(function(response){
     res.render("personalities-show",{
       body: req.body,
