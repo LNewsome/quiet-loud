@@ -32,10 +32,10 @@ personalitiesFactory.$inject =["$resouce"];
   }
 
 
-personalitiesIndexCtrl.inject=["personalities"];
+personalitiesIndexCtrl.inject=["personalitiesFactory"];
     function personalitiesIndexCtrl(personalities){
       var vm =this;
-      vm.personailty = Personalities.query();
+      vm.personailities = Personalities.query();
       vm.create = function(){
         Personalities.save(vm.newPersonalities, function(response){
           console.log(response)
