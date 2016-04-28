@@ -4,9 +4,7 @@ var parser  = require("body-parser");
 var debugLog = require('debug-log')('foo');
 var app     = express();
 var mongoose =require("./db/connection");
-var crud = require("express-mongoose-crud");
 var Personalities = mongoose.model("Personalities");
-
 
 
 app.use(parser.urlencoded({extended: true}));
@@ -27,10 +25,26 @@ app.get("/", function(req, res){
     });
 });
 app.get("/personalities", function(req, res){
-  res.render("personalities-index", {
-    personalities: personalities
+  Personalities.find().then(function(results){
+    res.render("personalities-index",{
+      personalities: results
+    });
   });
 });
+
+// Create a UserQuestio, for a specific personality
+app.post("/personalities/:name/user_questions", function(req, res){
+  //find personality
+  Personalities.findOne({name: "introvert"}).then(function(personality){
+    //add question to persanilty
+    //go to show page
+    var new_user_question = req.body.personality
+    personaility.questions.push(new_user_question)
+
+  });
+  res.send({params: req.params, body:req.body});
+});
+
 app.get("/:name", function(req, res){
   Personalities.findOne(req.params).then(function(response){
     res.render("personalities-show",{
@@ -39,22 +53,7 @@ app.get("/:name", function(req, res){
     });
   });
 });
-crud = crud({mongoose:mongoose});
-app.post("/:entity", crud, function(req, res){
-  res.json(res.locals[req.params.entity]);
-});
-app.get("/:entity/:id", crud, function(req, res){
-  res.json(res.locals[req.params.entity]);
-});
-app.get("/:entity", crud, function(req, res){
-  res.json(res.locals[req.params.entity]);
-});
-app.put("/;entity/:id", crud, function(req, res){
-  res.json(req.locals[req.params.entity]);
-});
-app.delete("/:entity/:id",crud, function(req, res){
-  res.json(req.locals[req.params.entity]);
-});
+
 
 app.listen(3003, function(){
   console.log("Work!")

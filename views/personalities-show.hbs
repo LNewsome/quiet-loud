@@ -1,13 +1,14 @@
 <h2>{{personalities.name}}</h2>
 
-<form action="/:name/forum" method="POST">
+<form action="/personalities/introvert/user_questions" method="POST">
     First name:<br>
-    <input type="text" name="firstname"><br>
+    <input type="text" name="personality[firstname]">
+    <br>
     Last name:<br>
-    <input type="text" name="lastname">
+    <input type="text" name="personality[lastname]">
     <br>
 
 <h3>Asks Anything!</h3>
-  <textarea question>Type Your Question!</textarea>
-  <button type="submit"><a href="forum-show">Ask!</a></button>
+  <textarea name="personality[question]">Type Your Question!</textarea>
+  <button type="submit">Ask!</button>
 </form>

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LNewsome/quiet-loud#readme",
   "dependencies": {
+    "angular": "^1.5.5",
     "body": "^5.1.0",
     "body-parser": "^1.15.0",
     "debug-log": "^1.0.0",
