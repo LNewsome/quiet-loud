@@ -1,20 +1,9 @@
-<h1>{{personality.personality}}</h1>
-
-
+<div id = box2>
+  <h1>{{personality.personality}}</h1>
+</div>
+<div id = box3>
 <h2>Questions asked of us:</h2>
-<ol>
-  {{#each personality.user_questions as |question|}}
-    <li>
-      {{question.firstname}}
-      {{question.lastname}}
-      {{question.question}}
-    </li>
-  {{/each}}
-</ol>
 
-
-
-<h2>Ask us a question</h2>
 <form action="/personalities/{{personality.personality}}/user_questions" method="POST">
     First name:<br>
     <input type="text" name="personality[firstname]">
@@ -26,3 +15,16 @@
   <textarea name="personality[question]" placeholder="Type a Question"></textarea>
   <button type="submit">Ask!</button>
 </form>
+</div>
+
+<div id = box4>
+<ul>
+  {{#each personality.user_questions as |question|}}
+    <li>
+      {{question.firstname}}
+      {{question.lastname}}:
+      {{question.question}}
+    </li>
+  {{/each}}
+</ul>
+</div>
