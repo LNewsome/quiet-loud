@@ -8,7 +8,7 @@
 ##Instructions for any dependencies
 ###Link to your user stories – who are your users, what do they want, and why?
 ####<Role>
-#As a user I should be able to select the personality type of my choice which links to a show page with a form. I should be able to fill out this form with my name and question. The data that I typed would then be submitted as a post on the page were other users would then be able to comment and delete their comments related to mypost.
+####As a user I should be able to select the personality type of my choice which links to a show page with a form. I should be able to fill out this form with my name and question. The data that I typed would then be submitted as a post on the page were other users would then be able to comment and delete their comments related to mypost.
 
 
 ###<Goal>
