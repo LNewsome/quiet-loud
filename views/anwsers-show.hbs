@@ -1,8 +1,9 @@
-<div id = box2>
+<div id = box5>
   <h1>{{personality.personality}}</h1>
 </div>
-<div id = box3>
-<h2>Questions asked of us:</h2>
+<div id = box6>
+<h2>Answer a question:</h2>
+
 <form action="/personalities/{{personality.personality}}/user_questions" method="POST">
     First name:<br>
     <input type="text" name="personality[firstname]">
@@ -14,19 +15,16 @@
   <textarea name="personality[question]" placeholder="Type a Question"></textarea>
   <button type="submit">Ask!</button>
 </form>
-<form action="/personalities/{{personality.personality}}/user_questions" method="POST">
-</from>
 </div>
-<div id = box4>
+
+<div id = box7>
 <ul>
-  {{#each personality.user_questions as |question|}}
+  {{#each personality.user_answer as |answer|}}
     <li>
-      {{question.firstname}}
-      {{question.lastname}}:
-      {{question.question}}
+      {{answer.firstname}}
+      {{answer.lastname}}:
+      {{question.answer}}
     </li>
   {{/each}}
 </ul>
 </div>
-
-<p><a href="anwsers-show.hbs>"Answer a question!</a> </p>
