@@ -7,7 +7,7 @@ var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
 
 app.use(parser.urlencoded({extended: true}));
-app.set("port", process.env.PORT || 3003);
+app.set("port", process.env.PORT || 3001);
 app.engine(".hbs", hbs({
   extname:     ".hbs",
   partialsDir: "views/",
@@ -68,5 +68,5 @@ app.get("/:name", function(req, res){
 
 
 app.listen(app.get("port"), function(){
-  console.log("app listening on port 3003")
+  console.log("app listening on port 3001")
 });
