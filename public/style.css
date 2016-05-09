@@ -28,6 +28,8 @@ h3{
 }
 
 #box4{
-  font-size: 30px;
-  list-style-type: none;
+  font-size: 25px;
 }
+ li{
+   list-style-type: none;
+ }
