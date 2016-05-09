@@ -68,5 +68,5 @@ app.get("/:name", function(req, res){
 
 
 app.listen(app.get("port"), function(){
-  console.log("Work!")
+  console.log("app listening on port 3003")
 });
