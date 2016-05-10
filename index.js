@@ -6,8 +6,8 @@ var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
 
-app.use(parser.urlencoded({extended: true}));
-app.set("veiw engine","hbs");
+app.use("port", process.env.PORT || 3001);
+app.set("view engine","hbs");
 app.engine(".hbs", hbs({
   extname:     ".hbs",
   partialsDir: "views/",
