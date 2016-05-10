@@ -6,7 +6,7 @@ var app     = express();
 var mongoose =require("./db/connection");
 var Personalities = mongoose.model("Personalities");
 
-app.use("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3000);
 app.set("view engine","hbs");
 app.engine(".hbs", hbs({
   extname:     ".hbs",
@@ -66,6 +66,6 @@ app.get("/:name", function(req, res){
   })
 });
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(app.get("port"), function(){
   console.log("port listening on port 3000")
 });
