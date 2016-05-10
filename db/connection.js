@@ -17,6 +17,10 @@ var PersonalitiesSchema = {
 }
 
 mongoose.model("Personalities", PersonalitiesSchema);
-mongoose.connect("mongodb://localhost/quietloud");
+if(process.env.NODE_ENV =="production"){
+  mongoose.connection(process.env.MONGOLAB_URL);
+}else{
+  mongoose.connect("mongodb://localhost/quietloud");
+}
 
 module.exports = mongoose;
