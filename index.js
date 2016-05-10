@@ -66,6 +66,6 @@ app.get("/:name", function(req, res){
   })
 });
 
-app.listen(3003, function(){
-  console.log("port listening on port 3003")
+app.listen(3000, function(){
+  console.log("port listening on port 3000")
 });
