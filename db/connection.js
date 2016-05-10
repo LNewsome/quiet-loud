@@ -18,7 +18,7 @@ var PersonalitiesSchema = {
 
 mongoose.model("Personalities", PersonalitiesSchema);
 if(process.env.NODE_ENV =="production"){
-  mongoose.connect(process.env.MONGOLAB_URL);
+  mongoose.connect(process.env.MONGOLAB_URI);
 }else{
   mongoose.connect("mongodb://localhost/3000");
 }
