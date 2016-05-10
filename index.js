@@ -66,12 +66,6 @@ app.get("/:name", function(req, res){
   })
 });
 
-
-<<<<<<< HEAD
 app.listen(3003, function(){
   console.log("port listening on port 3003")
-=======
-app.listen(app.get("port"), function(){
-  console.log("app listening on port 3001")
->>>>>>> master
 });
